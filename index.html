@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Front-End Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e2a3a, #0f1a24);
+            color: rgb(28, 180, 66);
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        /* Profile Image */
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            margin-top: -50px;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgb(48, 12, 211);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            background-color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Navigation (Horizontal) */
+        nav {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu li {
+            margin: 0;
+        }
+
+        .nav-menu a {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            color: #9e0720;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .nav-menu a:hover {
+            background-color: #1e2a3a;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a.active {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            display: none;
+        }
+
+        .section.active-section {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section h2 {
+            color: #1e2a3a;
+            border-left: 5px solid #ff6b6b;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills list */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, #1e2a3a, #2c3e50);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .skill-badge:hover {
+            transform: scale(1.05);
+        }
+
+        /* History items */
+        .history-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        /* Contact form */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 16px;
+            border: 1px solid #2c2727;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .contact-form button {
+            background: #041c3a;
+            color: rgb(209, 197, 197);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #ff6b6b;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1a24;
+            color: rgb(227, 225, 235);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .nav-menu a {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>✨ Selam, I'm  Abay Alie ✨</h1>
+    <p>Front-End Developer | Creative Thinker</p>
+</header>
+
+<!-- Profile Image -->
+<div class="profile-container">
+    <img class="profile-img" 
+         src="photo.jpg" 
+         alt="Profile Image">
+</div>
+
+<!-- Horizontal Navigation -->
+<nav>
+    <ul class="nav-menu">
+        <li><a href="#" data-section="home" class="active">🏠 Home</a></li>
+        <li><a href="#" data-section="skills">⚡ My Skill</a></li>
+        <li><a href="#" data-section="history">📜 My History</a></li>
+        <li><a href="#" data-section="contact">📞 Contact</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+    <!-- Home Section -->
+    <div id="home" class="section active-section">
+        <h2>Welcome to My  website</h2>
+        <p>Hi there! I'm a passionate front-end developer who loves creating beautiful, responsive, and user-friendly websites. I believe code is art, and every pixel matters.</p>
+        <br>
+        <p>✨ <strong>What I do:</strong> I build modern web experiences using HTML, CSS, JavaScript, and React.</p>
+        <p>🌍 Based in Ethiopia | Open to collaboration</p>
+        <p>🎯 Current goal: Master advanced animations and performance optimization.</p>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skills" class="section">
+        <h2>💻 My Skills</h2>
+        <div class="skills-list">
+            <span class="skill-badge">HTML5</span>
+            <span class="skill-badge">CSS3</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">React.js</span>
+            <span class="skill-badge">Tailwind CSS</span>
+            <span class="skill-badge">Git & GitHub</span>
+            <span class="skill-badge">Responsive Design</span>
+            <span class="skill-badge">Figma</span>
+        </div>
+        <p style="margin-top: 1.5rem;">⭐ Always learning new tools and best practices.</p>
+    </div>
+
+    <!-- History Section -->
+    <div id="history" class="section">
+        <h2>📅 My Journey</h2>
+        <div class="history-item">
+            <strong>2024 - Present:</strong> Freelance Front-End Developer – Built 10+ websites for local businesses.
+        </div>
+        <div class="history-item">
+            <strong>2023 - 2024:</strong> Completed Advanced Front-End Certification – freeCodeCamp.
+        </div>
+        <div class="history-item">
+            <strong>2022 - 2023:</strong> Started coding – HTML/CSS and built my first portfolio.
+        </div>
+        <div class="history-item">
+            <strong>2021:</strong> Discovered my passion for web development and never looked back!
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <h2>📬 Contact Me</h2>
+        <p>Have a project in mind? Let's work together! 👇</p>
+        <form class="contact-form" id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea rows="4" id="message" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message ✨</button>
+        </form>
+        <div id="formFeedback" style="margin-top: 1rem; font-weight: bold;"></div>
+        <p style="margin-top: 1.5rem;">📧 Email:#abayalie2@gmail.Com</p>
+        <p>📱 Telegram: @Abay</p>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 abay- Front-End Developer | Built with ❤️ and JavaScript</p>
+</footer>
+
+<script>
+    // JavaScript for navigation and interactive features
+
+    // Get all nav links and sections
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const sections = {
+        home: document.getElementById('home'),
+        skills: document.getElementById('skills'),
+        history: document.getElementById('history'),
+        contact: document.getElementById('contact')
+    };
+
+    // Function to switch sections
+    function switchSection(sectionId) {
+        // Hide all sections
+        Object.values(sections).forEach(section => {
+            section.classList.remove('active-section');
+        });
+        
+        // Show selected section
+        sections[sectionId].classList.add('active-section');
+        
+        // Update active class on nav links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if(link.getAttribute('data-section') === sectionId) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Add click event to each nav link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const sectionId = this.getAttribute('data-section');
+            switchSection(sectionId);
+        });
+    });
+
+    // Contact form submission with JavaScript alert
+    const contactForm = document.getElementById('contactForm');
+    const feedbackDiv = document.getElementById('formFeedback');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        if(name && email && message) {
+            feedbackDiv.innerHTML = `✅ Thanks ${name}! Your message has been sent. I'll reply soon.`;
+            feedbackDiv.style.color = "green";
+            contactForm.reset();
+            
+            // Optional: clear feedback after 4 seconds
+            setTimeout(() => {
+                feedbackDiv.innerHTML = "";
+            }, 4000);
+        } else {
+            feedbackDiv.innerHTML = "⚠️ Please fill all fields before sending.";
+            feedbackDiv.style.color = "red";
+        }
+    });
+
+    // Bonus: Console message for fun
+    console.log("🚀 Website ready! Navigation and form working perfectly.");
+</script>
+
+</body>
+</html>
